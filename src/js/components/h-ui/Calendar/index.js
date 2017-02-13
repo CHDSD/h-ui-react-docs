@@ -56,6 +56,10 @@ class Calendar extends React.Component {
 		window.addEventListener('click', this.outsideClk);
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener('click', this.outsideClk);	
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.startDate !== this.props.startDate || nextProps.endDate !== this.props.endDate) {
 			var startTime = nextProps.startDate || null;

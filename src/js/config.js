@@ -3,7 +3,7 @@
 	
 	var contextPath = '/';
 	if (process.env.NODE_ENV === 'production') {
-		contextPath = '/HONG-UI';
+		contextPath = '/h-ui-react-docs';
 	}
 
 	var appConf = {

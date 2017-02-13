@@ -8,7 +8,7 @@ app.use(express.static('.'));
 
 // 带路由地址刷新，返回index.html
 app.get('*', function (req, res) {
-  res.sendFile(__dirname + '/HONG-UI/index.html');
+  res.sendFile(__dirname + '/h-ui-react-docs/index.html');
 });
 
 app.listen(port, function () {

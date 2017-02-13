@@ -6,13 +6,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
   entry: {
     app: "./src/js/index.js",
-    vendor: ['react', 'react-dom', 'react-router', 'react-router-redux', 'react-redux', 'redux']
+    vendor: ['react', 'react-dom', 'react-router']
   },
 
   output: {
     path: './docs/',
     filename: 'js/[name].js',
-    publicPath: '/HONG-UI/',
+    publicPath: '/h-ui-react-docs/',
     chunkFilename: "js/[id].bundle.js"
   },
 

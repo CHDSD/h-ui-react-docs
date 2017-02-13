@@ -9,6 +9,22 @@ class App extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    let search = window.location.search
+    search = search.replace(/^\?/, '').split('&');
+    if (search.length) {
+      console.log('search', search);
+      debugger;
+      let redirect = search[0].split('=');
+      if (redirect[0] === 'redirect' && redirect[1] === 'true') {
+        let pathname = search[1].split('=')[1];
+        pathname = decodeURIComponent(pathname);
+        console.log('redirect path', pathname);
+        browserHistory.replace(pathname);
+      }
+    }
+  }
+
   // 菜单项被点击
   menuItemClk(path) {
     console.log('item clk : ' + path);
@@ -21,7 +37,6 @@ class App extends React.Component {
       <div>
         <div className="header">
           <Link activeClassName="active" to={contextPath + "/home"}>首页</Link>
-          <Link activeClassName="active" to={contextPath +"/info"}>信息</Link>
           <Link activeClassName="active" to={contextPath +"/about"}>关于</Link>
         </div>
 
