@@ -1,0 +1,173 @@
+// calendar style
+.chui-calendar {
+	/* 天的宽度 */
+	$dayW: 30px;
+	/* 月，年的宽度 */
+	$monthW: 50px;
+	/* 时间元素的padding */
+	$itemPadding: 5px;
+	/* 月，年容器左边的padding */
+	$monthPadding: 0 0 0 5px;
+	/* 当前视图之前，之后日期的颜色 */
+	$postColor: #ccc;
+	/* hover的背景色 */
+	$hoverBg: #eee;
+
+	display: inline-block;
+	position: relative;
+	background-color: #fff;
+	user-select: none;
+
+	.ipt-box {
+		height: $dayW;
+		line-height: $dayW;
+	}
+
+	.item-box {
+		position: absolute;
+		top: $dayW;
+		left: 0;
+		z-index: 1000;
+		width: $dayW * 7;
+		padding: $itemPadding;
+		background-color: #fff;
+		border: solid 1px #ccc;
+	}
+
+	.tools {
+		height: $dayW;
+		line-height: $dayW;
+		text-align: center;
+		position: relative;
+
+		.pre-view {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: $dayW;
+			height: 100%;
+			cursor: pointer;
+		}
+		.pre-view.disable {
+			visibility: hidden;
+		}
+		.next-view {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: $dayW;
+			height: 100%;
+			cursor: pointer;
+		}
+		.next-view.disable {
+			visibility: hidden;
+		}
+		.parents-info {
+			margin: 0 $dayW;
+			height: 100%;
+			cursor: pointer;
+		}
+		.pre-view:hover {
+			background-color: $hoverBg;
+		}
+		.next-view:hover {
+			background-color: $hoverBg;
+		}
+		.parents-info:hover {
+			background-color: $hoverBg;
+		}
+	}
+
+	.days {
+		.day-name {
+			display: inline-block;
+			width: $dayW;
+			height: $dayW;
+			text-align: center;
+			line-height: $dayW;
+		}
+		.day {
+			display: inline-block;
+			width: $dayW;
+			height: $dayW;
+			text-align: center;
+			line-height: $dayW;
+			cursor: pointer;
+
+			&.disable {
+				color: $postColor;
+				cursor: default;
+			}
+			&:hover {
+				background-color: $hoverBg;
+			}
+			&.disable:hover {
+				background-color: transparent;
+			}
+			&.post {
+				color: $postColor;
+			}
+			&.pre-month {
+				color: $postColor;
+			}
+			&.post-month {
+				color: $postColor;
+			}
+		}
+	}
+
+	.months {
+		padding: $monthPadding;
+		.month {
+			display: inline-block;
+			width: $monthW;
+			height: $dayW * 2;
+			line-height: $dayW * 2;
+			text-align: center;
+			cursor: pointer;
+
+			&.disable {
+				color: $postColor;
+				cursor: default;
+			}
+			&:hover {
+				background-color: $hoverBg;
+			}
+			&.disable:hover {
+				background-color: transparent;
+			}
+			&.post-month {
+				color: $postColor;
+			}
+		}
+	}
+
+	.years {
+		padding: $monthPadding;
+		.year {
+			display: inline-block;
+			width: $monthW;
+			height: $dayW * 2;
+			line-height: $dayW * 2;
+			text-align: center;
+			cursor: pointer;
+
+			&.disable {
+				color: $postColor;
+				cursor: default;
+			}
+			&:hover {
+				background-color: $hoverBg;
+			}
+			&.disable:hover {
+				background-color: transparent;
+			}
+			&.pre-year {
+				color: $postColor;
+			}
+			&.post-year {
+				color: $postColor;
+			}
+		}
+	}
+}

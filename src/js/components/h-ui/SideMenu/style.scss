@@ -1,0 +1,78 @@
+// padding宽度
+$pdw: 20px;
+// 菜单项高度
+$itemH: 30px;
+
+.h-ui-side-menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-color: #333;
+	color: #fff;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.mid-layer, .menu-item {
+		list-style: none;
+	}
+	.menu-item {
+		overflow: hidden;
+		transition: height 0.3s ease;
+	}
+	.mid-name {
+		margin: 0;
+		overflow: hidden;
+		transition: height 0.3s ease;
+	}
+	.menu-item, .mid-name {
+		line-height: $itemH;
+	}
+	>.menu-item, >.mid-name {
+		height: $itemH;
+	}
+	.sub-menu {
+		>.menu-item {
+			height: 0;
+		}
+		>.mid-layer>.mid-name {
+			height: 0;
+		}
+	}
+	.expand {
+		>.menu-item {
+			height: $itemH;
+		}
+		>.mid-layer>.mid-name {
+			height: $itemH;
+		}
+	}
+
+	>.mid-layer >.mid-name {
+		padding-left: $pdw;
+	}
+	>.menu-item {
+		padding-left: $pdw;
+	}
+	.level-2 {
+		background-color: #404040;
+		>.mid-layer >.mid-name {
+			padding-left: $pdw * 2;
+		}
+		>.menu-item {
+			padding-left: $pdw * 2;
+		}
+	}
+	.level-3 {
+		background-color: #505050;
+		>.mid-layer >.mid-name {
+			padding-left: $pdw * 3;
+		}
+		>.menu-item {
+			padding-left: $pdw * 3;
+		}
+	}
+}
