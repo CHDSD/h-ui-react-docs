@@ -4,6 +4,7 @@ import About from '../components/about';
 
 import nav from './nav';
 import form from './form';
+import common from './common'
 
 const routes = {
   path: window.appConf.contextPath,
@@ -15,7 +16,8 @@ const routes = {
     {path: 'home', component: Home},
     {path: 'about', component: About},
     nav,
-    form
+    form,
+    common
   ]
 }
 export default routes;

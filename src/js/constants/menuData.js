@@ -56,5 +56,17 @@ export default [
         class: 'menu'
       }
     ]
+  },
+  {
+    name: '公共类组件',
+    id: 'common',
+    class: 'common',
+    child: [
+      {
+        name: '分页',
+        id: 'pagination',
+        class: ''
+      }
+    ]
   }
 ];
