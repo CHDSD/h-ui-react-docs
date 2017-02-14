@@ -11,4 +11,8 @@
 		contextPath: contextPath
 	};
 	window.appConf = appConf;
+
+	hljs.configure({
+		tabReplace: '  '
+	});
 })();
