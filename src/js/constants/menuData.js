@@ -34,13 +34,13 @@ export default [
     ]
   },
   {
-    name: '导航-2',
-    id: 'dh2',
+    name: '表单类组件',
+    id: 'form',
     class: '',
     child: [
       {
-        name: '导航-2-1',
-        id: 'dh2-1',
+        name: '日历',
+        id: 'calendar',
         class: ''
       }
     ]
