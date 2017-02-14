@@ -13,13 +13,12 @@ class App extends React.Component {
     let search = window.location.search
     search = search.replace(/^\?/, '').split('&');
     if (search.length) {
-      console.log('search', search);
-      debugger;
+      console.log('search :', search);
       let redirect = search[0].split('=');
       if (redirect[0] === 'redirect' && redirect[1] === 'true') {
         let pathname = search[1].split('=')[1];
         pathname = decodeURIComponent(pathname);
-        console.log('redirect path', pathname);
+        console.log('redirect to : ', pathname);
         browserHistory.replace(pathname);
       }
     }
