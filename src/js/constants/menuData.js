@@ -66,6 +66,11 @@ export default [
         name: '分页',
         id: 'pagination',
         class: ''
+      },
+      {
+        name: 'Tabs切换',
+        id: 'Tabs',
+        class: ''
       }
     ]
   }
