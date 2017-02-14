@@ -1,51 +1,24 @@
 import React from 'react';
+import ReactDom from 'react-dom';
+import Calendar from '../../h-ui/Calendar';
 
 const code = `
-import SideMenu from '../../h-ui/SideMenu';
+/**
+ * 日历组件
+ * 组件可传入属性
+ * 
+ * startDate string 可选 可以选择的开始日期(e.g.,'2017-02-08')，默认为空
+ * endDate string  可选 可以选择的开始日期(e.g.,'2017-02-08')，默认为空
+ * hide boolean 可选 是否隐藏日期选择组件
+ * select function 可选 选择日期时的回调，点击日期元素时调用(e.g,select(dateStr))
+ */
 
-const menuData = [
-  {
-    name: '导航-1',
-    id: 'dh1',
-    class: 'aaa',
-    child: [
-      {
-        name: '导航1-1',
-        id: 'dh1-1',
-        class: ''
-      },
-      {
-        name: '导航1-2',
-        id: 'dh1-2',
-        class: '',
-        child: [
-          {
-            name: '导航1-2-1',
-            id: 'dh1-2-1',
-            class: ''
-          }
-        ]
-      }
-    ]
-  },
-  {
-    name: '导航-2',
-    id: 'dh2',
-    class: '',
-    child: [
-      {
-        name: '导航-2-1',
-        id: 'dh2-1',
-        class: ''
-      }
-    ]
-  }
-];
+import Calendar from '../../h-ui/Calendar';
 
-<SideMenu data={menuData}></SideMenu>
+<Calendar></Calendar>
 `;
 
-class Calendar extends React.Component {
+class CalendarDocs extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -54,19 +27,19 @@ class Calendar extends React.Component {
     this.refs.code.innerText = code;
     var _t = this;
     hljs.highlightBlock(_t.refs.code);
-    // setTimeout(function () {
-    //   // hljs.initHighlighting();
-    // }, 200)
   }
 
   render() {
   	return (
   		<div className="menu">
         <p>菜单(Calendar)组件：</p>
-        <div style={{width: '300px'}}>
+        <div style={{background: '#fff'}}>
+          <span>选择日期：</span>
+          <Calendar></Calendar>
         </div>
 
         <p>示例代码：</p>
+
         <div>
           <pre>
             <code ref="code" className="js"></code>
@@ -77,4 +50,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default CalendarDocs;
