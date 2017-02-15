@@ -1,0 +1,31 @@
+.Tabs {
+  box-sizing: border-box;
+  .container {
+    width: 100%;
+  }
+  .Tab_title {
+    padding: 7px 30px;
+    text-align: center;
+    color: #999;
+    display: inline-block;
+    border: 1px solid #ececec;
+    border-bottom: none;
+  }
+  .active {
+    color: #333;
+    border-color: #999;
+  }
+  .Tab_item {
+    text-align: left;
+    padding: 5px;
+    min-height: 50px;
+    color: #FFF;
+    display: none;
+  }
+  .Tab_item {
+    background-color: #0e90d2;
+  }
+  .show {
+    display: block;
+  }
+}

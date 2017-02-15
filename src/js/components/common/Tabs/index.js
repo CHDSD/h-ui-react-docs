@@ -2,19 +2,28 @@
  * Created by xiening on 2017/2/14.
  */
 import React from 'react';
+import Tabs from '../../h-ui/Tabs';
 
 const code = `
 import Tabs from '../../h-ui/Tabs';
 
-const TabsData = [
-  ];
-
-<Tabs ></Tabs>
+this.state = {
+            currentIndex : 1
+        }
+render:
+<Tabs >
+    <div name="第一选项卡">内容一......</div>
+    <div name="第二选项卡">内容二......</div>
+    <div name="第三选项卡">内容三.....</div>
+</Tabs>
 `;
 
-class Tabs extends React.Component {
+class DemoTabs extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            currentIndex : 0
+        }
     }
 
     componentDidMount() {
@@ -28,13 +37,18 @@ class Tabs extends React.Component {
 
     render() {
         return (
-            <div className="menu">
-                <p>tabs切换(Tabs)组件：</p>
-                <div style={{width: '300px'}}>
+            <div className="Tabs">
+                <p style={{marginBottom:'30px'}}>tabs切换(Tabs)组件：</p>
+                <div className="container">
                     {/*<Tabs> </Tabs>*/}
+                    <Tabs>
+                        <div name="第一选项卡">内容一......</div>
+                        <div name="第二选项卡">内容二......</div>
+                        <div name="第三选项卡">内容三.....</div>
+                    </Tabs>
                 </div>
 
-                <p>示例代码：</p>
+                <p style={{marginTop:'30px'}}>示例代码：</p>
                 <div>
           <pre>
             <code ref="code" className="js"></code>
@@ -45,4 +59,4 @@ class Tabs extends React.Component {
     }
 }
 
-export default Tabs;
+export default DemoTabs;
