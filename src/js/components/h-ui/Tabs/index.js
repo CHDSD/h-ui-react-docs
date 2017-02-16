@@ -8,8 +8,8 @@ class Tabs extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            currentIndex : 0,
-            animateshow:false
+            currentIndex : this.props.currentIndex,
+            animateshow : false
         }
     }
     check_title_index(index){

@@ -8,7 +8,8 @@ const code = `
 import Tabs from '../../h-ui/Tabs';
 
 var tabsData = {
-            animate : true //是否开启动画效果？false，true
+            currentIndex : 0, //指定刚开始显示哪个选项卡
+            animate : true    //是否开启动画效果？false，true
         }
 render:
 <Tabs >
@@ -34,6 +35,7 @@ class DemoTabs extends React.Component {
 
     render() {
         var tabsData = {
+            currentIndex : 0,
             animate : true
         }
         return (
