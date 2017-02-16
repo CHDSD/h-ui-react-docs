@@ -5,12 +5,21 @@ import React from 'react';
 import Tabs from '../../h-ui/Tabs';
 
 const code = `
+/**
+ * Tabs切换组件
+ * 组件可传入属性
+ *
+ * currentIndex number 必须 选择默认显示哪个选项卡
+ * animate boolean  必须 是否开启动画效果
+ * callBack function 可选 切换选项卡执行的回调函数
+ */
+
 import Tabs from '../../h-ui/Tabs';
 
 var tabsData = {
-            currentIndex : 0, //指定刚开始显示哪个选项卡
-            animate : true    //是否开启动画效果？false，true
-            callBack : function(index,title){  //如果有回调函数可以添加回调函数
+            currentIndex : 0,
+            animate : true ,
+            callBack : function(index,title){
                 console.log("tabs为：",index);
                 console.log("title为：",title);
             }
