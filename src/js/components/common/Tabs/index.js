@@ -8,7 +8,7 @@ const code = `
 import Tabs from '../../h-ui/Tabs';
 
 this.state = {
-            currentIndex : 1
+            currentIndex : 0
         }
 render:
 <Tabs >
@@ -22,7 +22,8 @@ class DemoTabs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentIndex : 0
+            currentIndex : 0,
+            animateshow : true
         }
     }
 
