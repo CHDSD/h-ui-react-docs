@@ -10,6 +10,11 @@ class Tabs extends React.Component {
         this.state = {
             currentIndex : this.props.currentIndex,
             animateshow : false
+        },
+        this.callBack = (index,name)=>{
+            if(this.props.callBack != undefined){
+                this.props.callBack(index,name);
+            }
         }
     }
     check_title_index(index){
@@ -29,7 +34,7 @@ class Tabs extends React.Component {
                     { React.Children.map( this.props.children , (element,index) => {
                         return(
                             /*箭头函数没有自己的this，这里的this继承自外围作用域，即组件本身*/
-                            <div onClick={ () => { this.setState({currentIndex : index,animateshow:isanimate}) } } className={ this.check_title_index(index) }>{ element.props.name }</div>
+                            <div onClick={ () => { this.setState({currentIndex : index,animateshow:isanimate,callBack:this.callBack(index,element.props.name)}) } } className={ this.check_title_index(index) }>{ element.props.name }</div>
                         );
                     })
                     }

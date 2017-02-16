@@ -10,6 +10,10 @@ import Tabs from '../../h-ui/Tabs';
 var tabsData = {
             currentIndex : 0, //指定刚开始显示哪个选项卡
             animate : true    //是否开启动画效果？false，true
+            callBack : function(index,title){  //如果有回调函数可以添加回调函数
+                console.log("tabs为：",index);
+                console.log("title为：",title);
+            }
         }
 render:
 <Tabs >
@@ -36,7 +40,11 @@ class DemoTabs extends React.Component {
     render() {
         var tabsData = {
             currentIndex : 0,
-            animate : true
+            animate : true,
+            callBack : function(index,title){
+                console.log("tabs为：",index);
+                console.log("title为：",title);
+            }
         }
         return (
             <div className="Tabs">
