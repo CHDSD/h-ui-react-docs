@@ -21,25 +21,9 @@ class Tabs extends React.Component {
     }
     render() {
         let _this = this;
-        //var animatestyle = {};
         var animatestyle = this.state.animateshow ? {animation: 'tabanimate 300ms linear'} : {};
         var isanimate = true ;
-        //if(this.state.animateshow){
-        //    isanimate = true;
-        //}else{
-        //    isanimate = false;
-        //}
-
-        //console.debug(isanimate);
-        //var animatestyle = {};
         return(
-
-            //if(isanimate){
-            //    animatestyle = {background:'red'}
-            //}else{
-            //    animatestyle =  {background:''}
-            //}
-          //var text = this.state.liked ? 'like' : 'haven\'t liked';
             <div>
                 {/*动态生成Tab导航*/}
                 <div className="Tab_title_wrap">
