@@ -7,8 +7,8 @@ import Tabs from '../../h-ui/Tabs';
 const code = `
 import Tabs from '../../h-ui/Tabs';
 
-this.state = {
-            currentIndex : 0
+var tabsData = {
+            animate : true //是否开启动画效果？false，true
         }
 render:
 <Tabs >
@@ -21,10 +21,6 @@ render:
 class DemoTabs extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentIndex : 0,
-            animateshow : true
-        }
     }
 
     componentDidMount() {
@@ -37,12 +33,15 @@ class DemoTabs extends React.Component {
     }
 
     render() {
+        var tabsData = {
+            animate : true
+        }
         return (
             <div className="Tabs">
                 <p style={{marginBottom:'30px'}}>tabs切换(Tabs)组件：</p>
                 <div className="container">
                     {/*<Tabs> </Tabs>*/}
-                    <Tabs>
+                    <Tabs {...tabsData}>
                         <div name="第一选项卡">内容一......</div>
                         <div name="第二选项卡">内容二......</div>
                         <div name="第三选项卡">内容三.....</div>

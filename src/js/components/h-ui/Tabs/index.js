@@ -9,8 +9,7 @@ class Tabs extends React.Component {
         super(props);
         this.state = {
             currentIndex : 0,
-            animateshow:false,
-            itembg: {'background':'#0e90d2'}
+            animateshow:false
         }
     }
     check_title_index(index){
@@ -22,7 +21,7 @@ class Tabs extends React.Component {
     render() {
         let _this = this;
         var animatestyle = this.state.animateshow ? {animation: 'tabanimate 300ms linear'} : {};
-        var isanimate = true ;
+        var isanimate = this.props.animate ;
         return(
             <div>
                 {/*动态生成Tab导航*/}
@@ -36,7 +35,7 @@ class Tabs extends React.Component {
                     }
                 </div>
                 {/*Tab内容区域*/}
-                <div className="Tab_item_wrap" style={this.state.itembg}>
+                <div className="Tab_item_wrap">
                     { React.Children.map(this.props.children , (element,index) => {
                         return(
                             <div className={ this.check_item_index(index) } style={animatestyle}>{ element }</div>
