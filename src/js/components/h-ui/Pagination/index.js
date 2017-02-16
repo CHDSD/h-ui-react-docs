@@ -30,14 +30,29 @@ class Pagination extends React.Component {
 			range = parseInt(this.props.range),
 			dif = total - current;
 		var sp = [],i;
-		var part = Math.ceil(range/2);
+		var part = parseInt(range/2);
 		if(current < (range + 1)){
 			if(dif < range){
-				for(i = 1;i < total + 1;i++){
-					if(i == current){
-						sp.push(<span onClick={this.handleclick} key={i} className='active'>{i}</span>);
-					}else{
-						sp.push(<span onClick={this.handleclick} key={i}>{i}</span>);
+				if(current - part && (current + range - part) < total){
+					sp.push(<span onClick={this.handleclick} key={1}>1</span>);
+					sp.push(<span key={'dot'}>...</span>);
+					
+					for(i = current - part;i < current + range - part;i++){
+						if(i == current){
+							sp.push(<span onClick={this.handleclick} key={i} className='active'>{i}</span>);
+						}else{
+							sp.push(<span onClick={this.handleclick} key={i}>{i}</span>);
+						}
+					};
+					sp.push(<span key={'anotherdot'}>...</span>);
+					sp.push(<span onClick={this.handleclick} key={total}>{total}</span>);
+				}else{
+					for(i = 1;i < total + 1;i++){
+						if(i == current){
+							sp.push(<span onClick={this.handleclick} key={i} className='active'>{i}</span>);
+						}else{
+							sp.push(<span onClick={this.handleclick} key={i}>{i}</span>);
+						}
 					}
 				}
 			}else{
@@ -52,10 +67,10 @@ class Pagination extends React.Component {
 				sp.push(<span onClick={this.handleclick} key={total}>{total}</span>);
 			}
 		}else{
-			if(dif < part){
+			if(dif < range){
 				sp.push(<span onClick={this.handleclick} key={1}>1</span>);
 				sp.push(<span key={'dot'}>...</span>);
-				for(i = current - (range - 1);i < total + 1;i++){
+				for(i = total - range + 1;i < total + 1;i++){
 					if(i == current){
 						sp.push(<span onClick={this.handleclick} key={i} className='active'>{i}</span>);
 					}else{
@@ -76,10 +91,21 @@ class Pagination extends React.Component {
 				sp.push(<span key={'anotherdot'}>...</span>);
 				sp.push(<span onClick={this.handleclick} key={total}>{total}</span>);
 			}
-		}
+		};
+		var up='',down='';
+		if (total == 1 || total == 0) {
+			up = 'disable';
+			down = 'disable';
+		} else {
+			if (current == 1) {
+				up='disable';
+			} else if (current == total) {
+				down='disable'
+			};
+		};
 		return(
 			<div className="pagination">
-				<span onClick={this.handleup} className='up'>
+				<span onClick={this.handleup} className={'up '+ up}>
 					&nbsp;
 					<svg width="48" height="48" viewBox="0 0 48 48">
 					  <g transform="translate(10,14) scale(-1,1) translate(-10,-14) translate(-14,-10) ">
@@ -89,7 +115,7 @@ class Pagination extends React.Component {
 					</svg>
 				</span>
 				{sp}
-				<span onClick={this.handledown} className='down'>
+				<span onClick={this.handledown} className={'down '+ down}>
 					&nbsp;
 					<svg width="48" height="48" viewBox="0 0 48 48">
 						<path fill="#999" d="m17.93096,9.5l-2.43096,2.6319l12.03714,11.8681l-12.03714,12.03797l2.43096,2.46203l14.56904,-14.5l-14.56904,-14.5z">
