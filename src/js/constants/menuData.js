@@ -71,6 +71,11 @@ export default [
         name: 'Tabs切换',
         id: 'Tabs',
         class: ''
+      },
+      {
+        name: 'Popup提示弹框',
+        id: 'Popup',
+        class: ''
       }
     ]
   }
