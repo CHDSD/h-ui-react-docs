@@ -1,0 +1,33 @@
+.pagination {
+  box-sizing: border-box; }
+  .pagination span {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #0275d8;
+    text-align: center;
+    cursor: pointer; }
+  .pagination span:hover {
+    color: #014c8c;
+    background-color: #eceeef;
+    border-color: #ddd; }
+  .pagination .active {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8; }
+  .pagination svg {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+  .pagination .disable {
+    pointer-events: none; }
+
+/*# sourceMappingURL=style.css.map */
