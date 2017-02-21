@@ -33,7 +33,7 @@ class Pagination extends React.Component {
 		var part = parseInt(range/2);
 		if(current < (range + 1)){
 			if(dif < range){
-				if(current - part && (current + range - part) < total){
+				if((current - part) > 0 && (current + range - part) < total){
 					sp.push(<span onClick={this.handleclick} key={1}>1</span>);
 					sp.push(<span key={'dot'}>...</span>);
 					

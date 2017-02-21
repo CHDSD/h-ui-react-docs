@@ -66,6 +66,16 @@ export default [
         name: '分页',
         id: 'pagination',
         class: ''
+      },
+      {
+        name: 'Tabs切换',
+        id: 'Tabs',
+        class: ''
+      },
+      {
+        name: 'Popup提示弹框',
+        id: 'Popup',
+        class: ''
       }
     ]
   }

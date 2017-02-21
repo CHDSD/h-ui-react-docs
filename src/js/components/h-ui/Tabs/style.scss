@@ -1,0 +1,43 @@
+.Tabs {
+  box-sizing: border-box;
+  .container {
+    width: 100%;
+  }
+  .Tab_title {
+    padding: 7px 30px;
+    text-align: center;
+    color: #999;
+    display: inline-block;
+    border: 1px solid #ececec;
+    border-bottom: none;
+  }
+  .active {
+    color: #333;
+    border-color: #999;
+  }
+  .Tab_item_wrap{
+    position: relative;
+    border:1px solid #999;
+    min-height: 50px;
+    max-height:150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding:5px;
+    background: #0e90d2;
+  }
+  .Tab_item {
+    text-align: left;
+    width:100%;
+    color: #FFF;
+    display: none;
+    position:relative;
+  }
+  .show {
+    display: block;
+  }
+}
+@keyframes tabanimate
+{
+  from {left:150px;}
+  to {left:0px;}
+}
