@@ -1,0 +1,113 @@
+html{font-size:100px}
+
+.droplist {
+	cursor: pointer;
+	color: #333333;
+	width:2rem;
+	background-color: #ffffff;	
+	line-height: 0.28rem;
+	>.cur-option {
+		height: 0.28rem;
+		line-height: 0.28rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		box-sizing: border-box;
+		border: solid 1px #ededed;
+		border-radius: 2px;
+		padding-left: 0.08rem;
+		>input {
+			font-size:14px;
+ 			text-align: center;
+  			width: 100%;
+			background: none;
+			border: none;
+			outline: none;
+			color: #7c97af;
+		}
+	}
+	>.option-list {
+		width: 2.2rem;
+		position: absolute;
+		top:0.2rem;
+		left: 0;
+		background-color: #ffffff;
+		box-sizing: border-box;
+		overflow: hidden;
+		z-index: 5;
+	    max-height: 4.5rem;
+	    overflow-y: auto;
+	    border-radius: 0.03rem;
+    &.active {
+			border: solid 1px #d6dadd;
+			box-shadow: 0 0 3px 2px #e3e5e7;
+    }
+		>.option {
+			height: 0;
+			overflow: hidden;
+			cursor: pointer;
+			margin-left: -0.3rem;
+			padding-left:0.1rem;
+			line-height: 0.3rem;
+		}
+		>.option.chked {
+			background-size: auto 50%;
+		}
+		>.option:hover {
+			background-color: #0E90D2;
+			color: #ffffff;
+		}
+		&.active>.option {
+			height: 0.3rem;
+		}
+		>.option-btn {
+			height: 0;
+			overflow: hidden;
+			>.ok-btn {
+				display: inline-block;
+				margin-top: 0.0125rem;
+				height: 0.25rem;
+				padding: 0 0.2rem;
+				color: #fff;
+				background: blue;
+			}
+		}
+		&.active>.option-btn {
+			height: 0.3rem;
+		}
+	}
+	>.option-text {
+		>input {
+			font-size:12px;
+		}
+		position: absolute;
+		left: 100%;
+		z-index: 10;
+		width: 100%;
+	}
+}
+
+.abtestDrop{
+	height: 0.23rem;
+	font-size: 0.14rem;
+}
+
+.select-abtest input{
+        height: 0.26rem;        
+        width: 2rem;        
+        border:0.01rem solid #d3d7da;
+        border-radius:0.03rem;
+        outline:none;
+        padding-left:0.2rem;
+    }
+.select-abtest span{
+    white-space: nowrap;
+    height:0.1rem;
+    width:0.16rem;
+    position:absolute;
+    right:0rem;
+    top:50%;
+    margin-top:-0.05rem;
+    background:url(../../../../image/downgray.png) center center no-repeat;
+    background-size:0.16rem 0.1rem;
+}
