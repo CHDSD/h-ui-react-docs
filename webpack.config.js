@@ -1,15 +1,21 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/js/index'
+    "react-hot-loader/patch",
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server",
+    "./src/js/index.js"
   ],
+
   output: {
     path: path.join(__dirname, 'docs'),
     filename: 'js/bundle.js',
     publicPath: '/'
   },
+
   module: {
     loaders: [
       {
@@ -28,5 +34,19 @@ module.exports = {
         loader: 'url-loader?limit=512&&name=image/[name].[ext]?[hash]'
       }
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ],
+
+  devServer: {
+    hot: true,
+    // contentBase: path.resolve(__dirname, '.'),
+    historyApiFallback: true,
+    publicPath: '/'
+  },
+
+  devtool: 'inline-source-map'
 };

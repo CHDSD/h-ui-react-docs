@@ -1,11 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
 
-import './config';
-import routes from './routes';
+import { AppContainer } from 'react-hot-loader';
+import AppMain from './AppMain';
 
-ReactDOM.render(
-	<Router history={browserHistory} routes={routes}></Router>,
-  document.getElementById('reactapp')
-);
+const render = (Component) => {
+	ReactDOM.render(
+		<AppContainer>
+			<Component></Component>
+		</AppContainer>,
+		document.getElementById('reactapp')
+	);
+};
+
+render(AppMain);
+
+if (module.hot) {
+	module.hot.accept('./AppMain', () => {
+		render(AppMain)
+	});
+}
