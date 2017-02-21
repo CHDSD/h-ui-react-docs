@@ -37,6 +37,10 @@ class App extends React.Component {
         <div className="header">
           <Link activeClassName="active" to={contextPath + "/home"}>首页</Link>
           <Link activeClassName="active" to={contextPath +"/about"}>关于</Link>
+          <a 
+            className="github-link" 
+            target="_blank" 
+            href="https://github.com/CHDSD/h-ui-react-docs"><i className="fa-icon icon-github-circled"></i></a>
         </div>
 
         <div className="main-wrapper">
