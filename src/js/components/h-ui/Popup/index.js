@@ -8,16 +8,19 @@ class Popup extends React.Component {
 
     constructor(props) {
         super(props);
+        var timestamp = new Date().getTime(),
+            timeMark = false;
         this.click = this.click.bind(this);
         this.closePopup = this.closePopup.bind(this);
         this.cancel = this.cancel.bind(this);
         this.confirm = this.confirm.bind(this);
         this.autoClose = this.autoClose.bind(this);
-        var timestamp = new Date().getTime();
         this.popupBox = "popupBox"+timestamp;
         this.popupMask = "popupMask"+timestamp;
+        this.timeMark = timeMark;
     }
     click(event) {
+        clearTimeout(this.timeMark);
         var popupBox = document.getElementById(this.popupBox+""),
             popupMask = document.getElementById(this.popupMask+""),
             pHeight = document.body.clientHeight,
@@ -42,8 +45,8 @@ class Popup extends React.Component {
         var popupBox = document.getElementById(this.popupBox+""),
             popupMask = document.getElementById(this.popupMask+"");
 
-        popupMask.style.display = 'none';
-        popupBox.style.display = 'none';
+            popupMask.style.display = 'none';
+            popupBox.style.display = 'none';
     }
     cancel(event){
         this.closePopup(event);
@@ -55,7 +58,7 @@ class Popup extends React.Component {
     }
     autoClose(event){
         if(this.props.time != null){
-          setTimeout(function(){
+           this.timeMark = setTimeout(function(){
                 this.closePopup(event);
             }.bind(this),3000);
         }

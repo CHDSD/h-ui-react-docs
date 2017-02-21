@@ -1,3 +1,5 @@
 node_modules
 h-ui-react-docs
 .idea
+.css
+.css.map

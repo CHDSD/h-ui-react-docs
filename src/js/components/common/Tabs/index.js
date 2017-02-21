@@ -38,7 +38,7 @@ class DemoTabs extends React.Component {
     }
 
     componentDidMount() {
-        this.refs.code.innerText = code;
+        //this.refs.code.innerText = code;
         var _t = this;
         hljs.highlightBlock(_t.refs.code);
         // setTimeout(function () {
@@ -70,7 +70,7 @@ class DemoTabs extends React.Component {
                 <p style={{marginTop:'30px'}}>示例代码：</p>
                 <div>
           <pre>
-            <code ref="code" className="js"></code>
+            <code ref="code" className="js">{code}</code>
           </pre>
                 </div>
             </div>
