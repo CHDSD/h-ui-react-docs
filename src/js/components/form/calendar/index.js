@@ -2,6 +2,16 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Calendar from '../../h-ui/Calendar';
 
+class Demo extends React.Component {
+  render() {
+    return (
+      <Calendar></Calendar>
+    );
+  }
+}
+
+var abc = 123;
+
 const code = `
 /**
  * 日历组件
@@ -15,7 +25,18 @@ const code = `
 
 import Calendar from '../../h-ui/Calendar';
 
-<Calendar></Calendar>
+function abc() {
+  return 'abc';
+}
+
+// 示例
+class Demo extends React.Component {
+  render() {
+    return (
+      <Calendar></Calendar>
+    );
+  }
+}
 `;
 
 class CalendarDocs extends React.Component {
@@ -24,7 +45,7 @@ class CalendarDocs extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.code.innerText = code;
+    // this.refs.code.innerText = code;
     var _t = this;
     hljs.highlightBlock(_t.refs.code);
   }
@@ -42,7 +63,7 @@ class CalendarDocs extends React.Component {
 
         <div>
           <pre>
-            <code ref="code" className="js"></code>
+            <code ref="code" className="js">{code}</code>
           </pre>
         </div>
   		</div>

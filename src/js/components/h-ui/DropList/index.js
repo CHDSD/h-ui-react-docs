@@ -8,7 +8,7 @@ var DropList = React.createClass({
 	getInitialState: function() {
 		var i, index = -1,
 			dropData = this.props.dropData;
-		// 如果没有禁用默认选择，默认选中第一项
+		// 如果没有禁用默认选择，默认选中第一项456
 		if (!this.props.nodefault && dropData.length > 0) {
 			index = 0;
 		}

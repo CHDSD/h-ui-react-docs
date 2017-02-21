@@ -83,7 +83,13 @@ const menuData = [
   }
 ];
 
-<SideMenu data={menuData}></SideMenu>
+class Demo extends React.Component {
+  render() {
+    return (
+      <SideMenu data={menuData}></SideMenu>
+    );
+  }
+}
 `;
 
 
