@@ -1,0 +1,60 @@
+//switch开关切换
+.container{
+    .iSwitch{
+      position: relative;
+      display: inline-block;
+      // width: 60px;
+      // height: 30px;
+      width: 50px;
+      height: 25px;
+      border-radius: 15px;
+      background: #dcdcdc;
+      border:1px solid #dcdcdc;
+      box-shadow: 0 0 5px #dcdcdc;
+      overflow: hidden;
+      vertical-align: middle;
+
+    }
+    .iSwitch input{
+      visibility: hidden;
+    }
+    .iSwitch i{
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      border-radius: 100%;
+      background: #fff;
+    }
+    .iSwitch i::before{
+      content: " ";
+      display: none;
+      width: 200%;
+      height: 100%;
+      border-radius: 25%;
+      background: #20c0e7;
+    }
+    .iSwitch i::after{
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background: #fff;
+    }
+    .iSwitch input:checked + i{
+      transform:translateX(100%);
+      -webkit-transform:translateX(100%);
+    }
+    .iSwitch input:checked + i:before{
+      display: inline-block;
+      transform:translateX(-50%);
+      -webkit-transform:translateX(-50%);
+    }
+}

@@ -32,7 +32,13 @@ export default [{
     name: '日历',
     id: 'calendar',
     class: ''
-  }]
+  },
+  {
+    name: '开关',
+    id: 'switch',
+    class: ''
+  }
+  ]
 }, {
   name: '导航类组件',
   id: 'nav',

@@ -107,20 +107,22 @@ class Pagination extends React.Component {
 			<div className="pagination">
 				<span onClick={this.handleup} className={'up '+ up}>
 					&nbsp;
-					<svg width="48" height="48" viewBox="0 0 48 48">
+					{/*<svg width="48" height="48" viewBox="0 0 48 48">
 					  <g transform="translate(10,14) scale(-1,1) translate(-10,-14) translate(-14,-10) ">
 					    <path d="m3.93096,19.5l-2.43096,2.6319l12.03714,11.8681l-12.03714,12.03797l2.43096,2.46203l14.56904,-14.5l-14.56904,-14.5z" fill="#999">
 					    </path>
 					  </g>
-					</svg>
+					</svg>*/}
+					<icon className='icon-left-open'></icon>
 				</span>
 				{sp}
 				<span onClick={this.handledown} className={'down '+ down}>
 					&nbsp;
-					<svg width="48" height="48" viewBox="0 0 48 48">
+					{/*<svg width="48" height="48" viewBox="0 0 48 48">
 						<path fill="#999" d="m17.93096,9.5l-2.43096,2.6319l12.03714,11.8681l-12.03714,12.03797l2.43096,2.46203l14.56904,-14.5l-14.56904,-14.5z">
 						</path>
-					</svg>
+					</svg>*/}
+					<icon className='icon-right-open'></icon>
 				</span>
 			</div>
 		);
