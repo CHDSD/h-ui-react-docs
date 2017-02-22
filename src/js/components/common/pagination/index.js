@@ -2,6 +2,16 @@ import React from 'react';
 import Pagination from '../../h-ui/Pagination';
 
 const code = `
+/**
+ * Pagination分页组件
+ * 组件可传入属性
+ *
+ * total number 必须 总页码数 默认10
+ * current number  必须 当前页码数 默认1
+ * range number 必须 分页显示连续按钮的数量 默认5
+ * click function 必须 切换显示页码的回调函数
+ */
+ 
 import Pagination from '../../h-ui/Pagination';
 
 this.state = {
