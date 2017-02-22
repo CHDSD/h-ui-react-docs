@@ -31,7 +31,7 @@ class Popup extends React.Component {
         popupBox.style.display = 'block';
         popupMask.style.display = 'block';
 
-        popupBox.style.top = pHeight/2-pBHeight/2 +'px';
+        popupBox.style.top = pHeight/4 +'px';
         popupBox.style.left = pWidth/2-pBWidth/2 +'px';
 
         if(this.props.callBack != undefined){
@@ -88,7 +88,7 @@ class Popup extends React.Component {
                 }
                 <div id={this.popupBox} className="popupBox" >
                     <h1 className="popupBoxTitle">{this.props.title}</h1>
-                    <a href="javascript:;" className="popupBoxCloseBtn" onClick={this.closePopup}><i className="iconClose"></i></a>
+                    <a href="javascript:;" className="popupBoxCloseBtn" onClick={this.closePopup}><i className="fa-icon icon-cancel"></i></a>
                     <div className="popupBoxBody">{this.props.content}</div>
                     {popupBoxFoot}
                 </div>
