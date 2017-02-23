@@ -150,8 +150,8 @@ class Popup extends React.Component {
         if (this.props.callBack != undefined) {
             return (
                 <div id="popupBoxFoot" className="popupBoxFoot">
-                <a onClick={this.cancel} style={{color:'#666',display: 'inline-block',padding: '5px 10px',background:'#e6e6e6',marginRight:'25px'}}>{this.props.cancelText}</a>
-                <a onClick={this.confirm} style={{color:'#fff',display: 'inline-block',padding: '5px 10px',background:'#0e90d2'}}>{this.props.confirmText}</a>
+                <a onClick={this.cancel} style={{color:'#666',display: 'inline-block',padding: '5px 10px',background:'#e6e6e6',marginRight:'25px',cursor: 'pointer'}}>{this.props.cancelText}</a>
+                <a onClick={this.confirm} style={{color:'#fff',display: 'inline-block',padding: '5px 10px',background:'#0e90d2',cursor: 'pointer'}}>{this.props.confirmText}</a>
             </div>
             );
         } else {
