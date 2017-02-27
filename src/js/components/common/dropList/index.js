@@ -8,7 +8,7 @@ const code = `
  *
  * curActive    string   必须  切换展开收起状态
  * curoption    string   必须  当前选中项的value
- * propKey      string   必须  
+ * propKey      string   必须  区分下拉框的id
  * chgOption    funtion  必须  保存选中项的值
  * chgActive    funtion  必须  设置curActive值
  * dropData     array    必须  选项数据
