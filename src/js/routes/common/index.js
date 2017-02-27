@@ -3,6 +3,7 @@ import Pagination from '../../components/common/pagination';
 import Tabs from '../../components/common/tabs';
 import Popup from '../../components/common/popup';
 import DropList from '../../components/common/dropList';
+import Form from '../../components/common/Form';
 
 
 const routes = {
@@ -20,6 +21,9 @@ const routes = {
 	}, {
 		path: 'dropList',
 		component: DropList
+	}, {
+		path: 'form',
+		component: Form
 	}]
 }
 export default routes;

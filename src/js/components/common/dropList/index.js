@@ -2,6 +2,23 @@ import React from 'react';
 import DropList from '../../h-ui/DropList';
 
 const code = `
+/**
+ * 下拉框组件
+ * 组件可传入属性
+ *
+ * curActive    string   必须  切换展开收起状态
+ * curoption    string   必须  当前选中项的value
+ * propKey      string   必须  
+ * chgOption    funtion  必须  保存选中项的值
+ * chgActive    funtion  必须  设置curActive值
+ * dropData     array    必须  选项数据
+ * nodefault    boolean  可选  是否默认选中第一个
+ * placeholder  string   可选  设置提示信息
+ */
+
+
+import DropList from '../../h-ui/DropList';
+
 const itemData = [
   {nm: '下拉框选项一',value: '1'}, 
   {nm: '下拉框选项二',value: '2'}, 

@@ -68,5 +68,9 @@ export default [{
     name: '下拉框',
     id: 'dropList',
     class: ''
+  }, {
+    name: '表单',
+    id: 'Form',
+    class: ''
   }]
 }];
