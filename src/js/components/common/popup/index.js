@@ -20,38 +20,45 @@ const code = `
 
 import Tabs from '../../h-ui/Popup';
 
-var popupData = {
-    title:'提示信息标题1',
-    content:'提示信息内容1'
-}
-var popupData2 = {
-    title:'提示信息标题2',
-    content:'提示信息内容2',
-    isdrag:true
-    cancelText:'否',
-    confirmText:'是',
-    callBack:function(b){
-        if(b){
+class DemoPopup extends React.Component{
+    var popupData = {
+         title:'提示信息标题1',
+         content:'提示信息内容1'
+    }
+    var popupData2 = {
+        title:'提示信息标题2',
+        content:'提示信息内容2',
+        isdrag:true
+        cancelText:'否',
+        confirmText:'是',
+        callBack:function(b){
+          if(b){
             console.log("点击了"+this.confirmText+"按钮"+b);
-        }else{
+          }else{
             console.log("点击了"+this.cancelText+"按钮"+b);
+          }
         }
     }
+    var popupData3 = {
+        title:'提示信息标题3',
+        content:'提示信息内容3',
+        time: 3000
+    }
+
+    render(){
+        return(
+            <Popup {...popupData}>
+                <a href="javascript:;" className="alertPopup">alert</a>
+            </Popup>
+            <Popup {...popupData2}>
+                <a href="javascript:;" className="alertPopup" style={{marginTop:'15px'}} >带回调函数的popup</a>
+            </Popup>
+            <Popup {...popupData3}>
+                <a href="javascript:;" className="alertPopup" style={{marginTop:'15px'}} >3秒关闭</a>
+            </Popup>
+        )
+    }
 }
-var popupData3 = {
-    title:'提示信息标题3',
-    content:'提示信息内容3',
-    time: 3000
-}
-    <Popup {...popupData}>
-        <a href="javascript:;" className="alertPopup">alert</a>
-    </Popup>
-    <Popup {...popupData2}>
-        <a href="javascript:;" className="alertPopup" style={{marginTop:'15px'}} >带回调函数的popup</a>
-    </Popup>
-    <Popup {...popupData3}>
-        <a href="javascript:;" className="alertPopup" style={{marginTop:'15px'}} >3秒关闭</a>
-    </Popup>
 `;
 
 class DemoPopup extends React.Component {

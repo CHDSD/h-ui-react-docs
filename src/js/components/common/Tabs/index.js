@@ -16,20 +16,25 @@ const code = `
 
 import Tabs from '../../h-ui/Tabs';
 
-var tabsData = {
-            currentIndex : 0,
-            animate : true ,
-            callBack : function(index,title){
-                console.log("tabs为：",index);
-                console.log("title为：",title);
-            }
-        }
-render:
-<Tabs >
-    <div name="第一选项卡">内容一......</div>
-    <div name="第二选项卡">内容二......</div>
-    <div name="第三选项卡">内容三.....</div>
-</Tabs>
+class DemoTabs extends React.Component{
+   render(){
+      var tabsData = {
+         currentIndex : 0,
+         animate : true ,
+         callBack : function(index,title){
+              console.log("tabs为：",index);
+              console.log("title为：",title);
+         }
+      }
+      return(
+        <Tabs {...tabsData}>
+            <div name="第一选项卡">内容一......</div>
+            <div name="第二选项卡">内容二......</div>
+            <div name="第三选项卡">内容三.....</div>
+        </Tabs>
+      );
+   }
+}
 `;
 
 class DemoTabs extends React.Component {
