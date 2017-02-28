@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/CHDSD/h-ui-react-docs#readme",
   "dependencies": {
+    "hong-ui-react": "^0.5.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2"
@@ -36,7 +37,6 @@
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
-    "hong-ui-react": "^0.1.0",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.0",
     "react-hot-loader": "^3.0.0-beta.6",
