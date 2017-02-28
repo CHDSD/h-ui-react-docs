@@ -18,7 +18,7 @@ class Tabs extends React.Component {
         }
     }
     check_title_index(index){
-        return index === this.state.currentIndex ? "Tab_title active" : "Tab_title";
+        return index === this.state.currentIndex ? "Tab_title unselectable active" : "Tab_title unselectable";
     }
     check_item_index(index){
         return index === this.state.currentIndex ? "Tab_item show" : "Tab_item";
