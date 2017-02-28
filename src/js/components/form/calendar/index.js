@@ -2,16 +2,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Calendar from '../../h-ui/Calendar';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <Calendar></Calendar>
-    );
-  }
-}
-
-var abc = 123;
-
 const code = `
 /**
  * 日历组件
@@ -24,10 +14,6 @@ const code = `
  */
 
 import Calendar from '../../h-ui/Calendar';
-
-function abc() {
-  return 'abc';
-}
 
 // 示例
 class Demo extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 
 class MenuItem extends React.Component {
 	constructor(props) {
@@ -58,8 +58,13 @@ class MenuItem extends React.Component {
 				</li>
 			)
 		} else {
-			const { parent, level } = this.props;
+			const { parent, level, curPath } = this.props;
 			let itemCls = "menu-item " + (data.class || '');
+			if (parent + '/' + data.id === curPath) {
+				itemCls += ' cur';
+			}
+			// 为了方便用于不需要导航的情况，菜单项不设置link，在菜单项点击回调事件中来处理url跳转。
+			// 
 			// let route = parent ? parent + '/' + data.path : data.path;
 			// let link;
 			// if (data.path) {

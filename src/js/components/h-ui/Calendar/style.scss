@@ -12,6 +12,8 @@
 	$postColor: #ccc;
 	/* hover的背景色 */
 	$hoverBg: #eee;
+	/* 当前选中日期的颜色 */
+	$curBg: #108ee9;
 
 	display: inline-block;
 	position: relative;
@@ -113,6 +115,10 @@
 			&.post-month {
 				color: $postColor;
 			}
+			&.cur {
+				color: #fff;
+				background-color: $curBg;
+			}
 		}
 	}
 
@@ -138,6 +144,10 @@
 			}
 			&.post-month {
 				color: $postColor;
+			}
+			&.cur {
+				color: #fff;
+				background-color: $curBg;
 			}
 		}
 	}
@@ -167,6 +177,10 @@
 			}
 			&.post-year {
 				color: $postColor;
+			}
+			&.cur {
+				color: #fff;
+				background-color: $curBg;
 			}
 		}
 	}

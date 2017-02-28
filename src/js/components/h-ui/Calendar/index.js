@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Month from './Month';
+import * as tUtils from './timeUtils';
 import './style.scss';
 
 // 月份名映射
@@ -33,12 +36,14 @@ class Calendar extends React.Component {
 		let now = new Date();
 		let startTime = this.props.startDate || null;
 		let endTime = this.props.endDate || null;
-		startTime = startTime && this.strToTime(startTime);
-		endTime = endTime && this.strToTime(endTime);
+		startTime = startTime && tUtils.strToTime(startTime);
+		endTime = endTime && tUtils.strToTime(endTime);
 		
 		this.state = {
 			// 当前文本框显示的时间
 			selTime: '',
+			// 当前文本框显示的时间字符串
+			selTimeStr: '',
 			// 当前的系统时间
 			curTime: now,
 			// 当前日历框视图中显示的时间
@@ -76,38 +81,10 @@ class Calendar extends React.Component {
 		if (nextProps.startDate !== this.props.startDate || nextProps.endDate !== this.props.endDate) {
 			let startTime = nextProps.startDate || null;
 			let endTime = nextProps.endDate || null;
-			startTime = startTime && this.strToTime(startTime);
-			endTime = endTime && this.strToTime(endTime);
+			startTime = startTime && tUtils.strToTime(startTime);
+			endTime = endTime && tUtils.strToTime(endTime);
 			this.setState({startTime: startTime, endTime: endTime});
 		}
-	}
-
-	/**
-	 * 字符串转换为时间
-	 * @param  {string} str 输入时间字符串
-	 * @return {[type]}     [description]
-	 */
-	strToTime(str) {
-		let ymd = str.split('-');
-		let y = ymd[0];
-		let m = ymd[1] - 1;
-		let d = ymd[2];
-		return new Date(y, m, d);
-	}
-
-	/**
-	 * 时间转换为字符串
-	 * @param  {Date} time 输入的事件对象
-	 * @return {[type]}      [description]
-	 */
-	timeToStr(time) {
-		let y = time.getFullYear();
-		let m = time.getMonth();
-		let d = time.getDate();
-
-		m = (m + 101 + '').substring(1);
-		d = (d + 100 + '').substring(1);
-		return [y, m, d].join('-');
 	}
 
 	// 阻止点击事件冒泡
@@ -120,92 +97,10 @@ class Calendar extends React.Component {
 		this.setState({showItem: false});
 	}
 
-	// 获取时间对象的yyyy, mm, dd
-	getYmd(date) {
-		let y = date.getFullYear();
-		let m = date.getMonth();
-		let d = date.getDate();
-		return {y, m, d};
-	}
-
-	// 获取月视图，显示天
-	getMonthView() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
-		let { startTime, endTime, curTime } = this.state;
-		let dayList = [];
-
-		let day = 1;
-		let cls = '';
-		let monthDay = new Date(y, m, day);
-		// 当前月份的天
-		while (monthDay.getMonth() === m) {
-			cls = 'day cur-month'
-			if ((startTime && monthDay < startTime) || (endTime && monthDay > endTime)) {
-				cls += ' disable';
-			}
-			if (monthDay > curTime) {
-				cls += ' post';
-			}
-			dayList.push(<span className={cls} key={day}>{day}</span>);
-			day += 1;
-			monthDay = new Date(y, m, day);
-		}
-		let lastDate = day - 1;
-
-		// 设置灰色显示的上月的日期
-		day = 1;
-		cls = '';
-		let firstDayOfMonth = new Date(y, m, 1).getDay();
-		let preDays = firstDayOfMonth === 0 ? 7 : firstDayOfMonth;
-		while (preDays > 0) {
-			preDays -= 1;
-			day -= 1;
-			monthDay = new Date(y, m, day);
-			cls = 'day pre-month'
-			if ((startTime && monthDay < startTime) || (endTime && monthDay > endTime)) {
-				cls += ' disable';
-			}
-			dayList.unshift(<span className={cls} key={day}>{monthDay.getDate()}</span>)
-		}
-
-		// 设置灰色显示的下月的日期
-		day = lastDate;
-		cls = '';
-		let lastDayOfMonth = new Date(y, m, day).getDay();
-		let postDays = lastDayOfMonth === 6 ? 7 : 7 - lastDayOfMonth - 1;
-		// 确保每个月显示6行天数
-		if ((dayList.length + postDays) / 7 < 6) {
-			postDays += 7;
-		}
-		while (postDays > 0) {
-			postDays -= 1;
-			day += 1;
-			monthDay = new Date(y, m, day);
-			cls = 'day post-month'
-			if ((startTime && monthDay < startTime) || (endTime && monthDay > endTime)) {
-				cls += ' disable';
-			}
-			dayList.push(<span className={cls} key={day}>{monthDay.getDate()}</span>)
-		}
-		
-		return (
-			<div className="days" onClick={this.dayClk}>
-				<span className="day-name">日</span>
-				<span className="day-name">一</span>
-				<span className="day-name">二</span>
-				<span className="day-name">三</span>
-				<span className="day-name">四</span>
-				<span className="day-name">五</span>
-				<span className="day-name">六</span>
-				{dayList}
-			</div>
-		);
-	}
-
 	// 获取年视图，显示月份
 	getYearView() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
-		let { startTime, endTime, curTime } = this.state;
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
+		let { startTime, endTime, curTime, selTime } = this.state;
 		let mList = [];
 
 		// 开始，结束日期所在的月份，每个显示的月份如果不在开始，结束时间的月份范围内，都要加上disable。
@@ -222,6 +117,11 @@ class Calendar extends React.Component {
 			if (monthDay > curTime) {
 				cls += ' post-month';
 			}
+			if (selTime) {
+				if (tUtils.compareTime(monthDay, selTime, 'month')) {
+					cls += ' cur';
+				}
+			}
 			mList.push(<span className={cls} key={i}>{MONTH_MAP[i]}</span>)
 		}
 
@@ -234,8 +134,8 @@ class Calendar extends React.Component {
 
 	// 获取十年期视图
 	getDecadeView() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
-		let { startTime, endTime, curTime } = this.state;
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
+		let { startTime, endTime, curTime, selTime } = this.state;
 		var yList = [];
 
 		// 开始，结束日期所在的年份，每个显示的年份如果不在开始，结束时间的年份范围内，都要加上disable。
@@ -259,6 +159,11 @@ class Calendar extends React.Component {
 			if ((startTime && monthDay < startTime) || (endTime && monthDay > endTime)) {
 				cls += ' disable';
 			}
+			if (selTime) {
+				if (tUtils.compareTime(monthDay, selTime, 'year')) {
+					cls += ' cur';
+				}
+			}
 			yList.push(<span className={cls} key={i}>{y}</span>);
 			y++;
 		}
@@ -273,8 +178,12 @@ class Calendar extends React.Component {
 	// 获取日历视图
 	getView() {
 		let curView = this.state.curView;
+		let { startTime, endTime, curTime, selTime, viewTime } = this.state;
+
 		if (curView === 'month') {
-			return this.getMonthView();
+			return (
+				<Month {...{startTime, endTime, curTime, selTime, viewTime}} dayClk={this.dayClk}></Month>
+			);
 		} else if (curView === 'year') {
 			return this.getYearView();
 		} else if (curView === 'decade') {
@@ -282,10 +191,9 @@ class Calendar extends React.Component {
 		}
 	}
 
-
 	// 获取当前视图父级信息的描述
 	getParentsInfo() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
 		let curView = this.state.curView;
 		let info = '';
 
@@ -299,15 +207,29 @@ class Calendar extends React.Component {
 		return info;
 	}
 
-	// 显示、隐藏日历框
+	// 显示、隐藏日历框。如果将要显示日历框时，重置viewTime为当前选中时间selTime，或当前时间。
 	toggle() {
-		this.setState({showItem: !this.state.showItem});
+		let obj = {showItem: !this.state.showItem};
+		if (obj.showItem) {
+			if (this.state.selTime) {
+				obj['viewTime'] = this.state.selTime;
+			} else {
+				obj['viewTime'] = new Date();				
+			}
+		} 
+		this.setState(obj);
 	}
 
-	// 设置选中的日期，如果传入了select方法，调用select方法
-	setSelectTime(timeStr, viewTime) {
+	/**
+	 * 设置选中的日期，如果传入了select方法，调用select方法
+	 * @param {[type]} time     选择的时间
+	 * @param {[type]} timeStr  选择的时间的字符串
+	 * @param {[type]} viewTime 视图时间
+	 */
+	setSelectTime(time, timeStr, viewTime) {
 		this.setState({
-			selTime: timeStr,
+			selTime: time,
+			selTimeStr: timeStr,
 			viewTime: viewTime,
 			showItem: false
 		});
@@ -316,22 +238,15 @@ class Calendar extends React.Component {
 		}
 	}
 
-	// 日期被点击
-	dayClk(e) {
-		if(e.target.className.match(/disable/)) {
-			return ;
-		}
-		let { y, m, d } = this.getYmd(this.state.viewTime);
-		let cls = e.target.className;
-		d = e.target.innerHTML;
-		if (cls.match(/pre-month/)) {
-			m -= 1;
-		} else if (cls.match(/post-month/)) {
-			m += 1;
-		}
-		let nextSelTime = this.timeToStr(new Date(y, m, e.target.innerHTML));
-		let nextViewTime = new Date(y, m, d);
-		this.setSelectTime(nextSelTime, nextViewTime);
+	/**
+	 * 日期被点击时，如果是可选日期，子组件会调用该方法，并传入三个参数。
+	 * @param  {[type]} nextSelTime    选择的时间
+	 * @param  {[type]} nextSelTimeStr 选择的时间对应的字符串
+	 * @param  {[type]} nextViewTime   对应的视图时间
+	 * @return {[type]}                [description]
+	 */
+	dayClk(nextSelTime, nextSelTimeStr, nextViewTime) {
+		this.setSelectTime(nextSelTime, nextSelTimeStr, nextViewTime);
 	}
 
 	// 月份被点击
@@ -352,7 +267,7 @@ class Calendar extends React.Component {
 			let m = viewTime.getMonth();
 			let d = viewTime.getDate();
 			this.setState({
-				viewTime: new Date(y, month, d),
+				viewTime: new Date(y, month, 1),
 				curView: 'month'
 			});
 		}
@@ -363,43 +278,43 @@ class Calendar extends React.Component {
 		if(e.target.className.match(/disable/)) {
 			return ;
 		}
-		let { y, m, d } = this.getYmd(this.state.viewTime);
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
 		let year = e.target.innerHTML;
 
 		this.setState({
-			viewTime: new Date(year, m, d),
+			viewTime: new Date(year, 0, 1),
 			curView: 'year'
 		});
 	}
 
 	// 上一个日历视图
 	preView() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
 		let curView = this.state.curView;
 		let nextTime = null;
 
 		if (curView === 'month') {
-			nextTime = new Date(y, m - 1, d);
+			nextTime = new Date(y, m - 1, 1);
 		} else if (curView === 'year') {
-			nextTime = new Date(y - 1, m, d);
+			nextTime = new Date(y - 1, 0, 1);
 		} else if (curView === 'decade') {
-			nextTime = new Date(y - 10, m, d);
+			nextTime = new Date(y - 10, 0, 1);
 		}
 		this.setState({viewTime: nextTime});
 	}
 
 	// 下一个日历视图
 	nextView() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
 		let curView = this.state.curView;
 		let nextTime = null;
 
 		if (curView === 'month') {
-			nextTime = new Date(y, m + 1, d);
+			nextTime = new Date(y, m + 1, 1);
 		} else if (curView === 'year') {
-			nextTime = new Date(y + 1, m, d);
+			nextTime = new Date(y + 1, 0, 1);
 		} else if (curView === 'decade') {
-			nextTime = new Date(y + 10, m, d);
+			nextTime = new Date(y + 10, 0, 1);
 		}
 		nextTime && this.setState({viewTime: nextTime});
 	}
@@ -420,7 +335,7 @@ class Calendar extends React.Component {
 	// 获取tools中pre，netx按钮的class
 	// 主要用于props中传入了startDate，endDate时，控制按钮的显示
 	getPreNextBtnCls() {
-		let { y, m, d } = this.getYmd(this.state.viewTime);
+		let { y, m, d } = tUtils.getYmd(this.state.viewTime);
 		let curView = this.state.curView;
 
 		let pre = 'pre-view';
@@ -428,7 +343,7 @@ class Calendar extends React.Component {
 
 		if (this.props.startDate) {
 			// 和属于当前视图(不包括pre和post)的第一个元素的第一天比较，如果比startDate小，则不显示preView按钮
-			let startTime = this.strToTime(this.props.startDate);
+			let startTime = tUtils.strToTime(this.props.startDate);
 			let compareTime;
 			if (curView === 'month') {
 				// 比较这个月第一天
@@ -447,7 +362,7 @@ class Calendar extends React.Component {
 
 		if (this.props.endDate) {
 			// 和属于当前视图(不包括pre和post)的最后一个元素的最后一天比较，如果比endDate大，则不显示nextView按钮
-			let endTime = this.strToTime(this.props.endDate);
+			let endTime = tUtils.strToTime(this.props.endDate);
 			let compareTime;
 			if (curView === 'month') {
 				// 比较这个月最后一天
@@ -484,7 +399,7 @@ class Calendar extends React.Component {
 		return (
 			<div className="chui-calendar" onClick={this.preventClk} style={{display: (this.props.hide ? 'none' : '')}}>
 				<div className="ipt-box">
-					<input type="text" onClick={this.toggle} value={this.state.selTime} readOnly={true} />
+					<input type="text" onClick={this.toggle} value={this.state.selTimeStr} readOnly={true} />
 				</div>
 				<div className="item-box" style={{display: (this.state.showItem ? '' : 'none')}}>
 					<div className="tools">
