@@ -40,6 +40,7 @@ class App extends React.Component {
           <a 
             className="github-link" 
             target="_blank" 
+            title="Github"
             href="https://github.com/CHDSD/h-ui-react-docs"><i className="fa-icon icon-github-circled"></i></a>
         </div>
 

@@ -11,7 +11,9 @@ class SideMenu extends React.Component {
 		this.state = {
 			contextPath: contextPath,
 			// 当前展开路径
-			curPath: this.props.curPath || ''
+			curPath: this.props.curPath || '',
+			// 当前激活选项路径
+			curItemPath: this.props.curPath || ''
 		};
 
 		this.setCurPath = this.setCurPath.bind(this);
@@ -40,17 +42,20 @@ class SideMenu extends React.Component {
 			path.pop();
 			path = path.join('/');
 		}
-		this.setState({curPath: path});
-		if (isItem && this.props.itemClk) {
-			this.props.itemClk(path);
+		let obj = {curPath: path};
+		if (isItem) {
+			obj['curItemPath'] = path;
+			if (this.props.itemClk) {
+				this.props.itemClk(path);				
+			}
 		}
+		this.setState(obj);
 	}
 
 	render() {
-		const { data } = this.props;
-		const { contextPath } = this.state;
-		let curActive = this.props.curActive;
-		let curPath = this.state.curPath;
+		const { data, curActive } = this.props;
+		const { contextPath, curPath, curItemPath } = this.state;
+		// let curActive = this.props.curActive;
 
 		let list = [];
 		for (let i = 0; i < data.length; i++) {
@@ -60,6 +65,7 @@ class SideMenu extends React.Component {
 				parent: contextPath,
 				data: data[i],
 				curPath: curPath,
+				curItemPath: curItemPath,
 				setPath: this.setCurPath
 			}
 			list.push(

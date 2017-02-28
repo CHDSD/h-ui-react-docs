@@ -6,6 +6,7 @@
   /* 月，年容器左边的padding */
   /* 当前视图之前，之后日期的颜色 */
   /* hover的背景色 */
+  /* 当前选中日期的颜色 */
   display: inline-block;
   position: relative;
   background-color: #fff;
@@ -81,6 +82,9 @@
       color: #ccc; }
     .chui-calendar .days .day.post-month {
       color: #ccc; }
+    .chui-calendar .days .day.cur {
+      color: #fff;
+      background-color: #108ee9; }
   .chui-calendar .months {
     padding: 0 0 0 5px; }
     .chui-calendar .months .month {
@@ -99,6 +103,9 @@
         background-color: transparent; }
       .chui-calendar .months .month.post-month {
         color: #ccc; }
+      .chui-calendar .months .month.cur {
+        color: #fff;
+        background-color: #108ee9; }
   .chui-calendar .years {
     padding: 0 0 0 5px; }
     .chui-calendar .years .year {
@@ -119,6 +126,9 @@
         color: #ccc; }
       .chui-calendar .years .year.post-year {
         color: #ccc; }
+      .chui-calendar .years .year.cur {
+        color: #fff;
+        background-color: #108ee9; }
 .h-ui-side-menu {
   margin: 0;
   padding: 0;
@@ -133,7 +143,11 @@
     list-style: none; }
   .h-ui-side-menu .menu-item {
     overflow: hidden;
-    transition: height 0.3s ease; }
+    transition: height 0.3s ease;
+    cursor: pointer; }
+    .h-ui-side-menu .menu-item.cur {
+      color: #fff;
+      background-color: #108ee9; }
   .h-ui-side-menu .mid-name {
     margin: 0;
     overflow: hidden;
@@ -211,6 +225,10 @@
   .Tabs .active {
     color: #333;
     border-color: #999; }
+  .Tabs .unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; }
   .Tabs .Tab_item_wrap {
     position: relative;
     border: 1px solid #999;
@@ -245,6 +263,8 @@
     padding: 5px 15px;
     background: #0e90d2;
     color: #fff; }
+  .Popup .alertPopup:hover {
+    background: #0d86c4 !important; }
   .Popup .popupMask {
     position: fixed;
     top: 0px;
@@ -282,6 +302,10 @@
     .Popup .popupBox .popupBoxFoot {
       padding: 10px 0px;
       display: none; }
+      .Popup .popupBox .popupBoxFoot a:nth-of-type(1):hover {
+        background: #d4d4d4 !important; }
+      .Popup .popupBox .popupBoxFoot a:nth-of-type(2):hover {
+        background: #0d86c4 !important; }
 html, body, div {
   margin: 0;
   padding: 0; }
@@ -478,5 +502,18 @@ html {
   margin-top: -0.05rem;
   background: url(/h-ui-react-docs/image/downgray.png?24cdc4d8688f53f5ddd77a0b48648841) center center no-repeat;
   background-size: 0.16rem 0.1rem; }
+html {
+  font-size: 100px; }
+
+.item {
+  margin-top: 0.15rem; }
+
+.input {
+  border-radius: 0.03rem;
+  height: 0.26rem;
+  width: 2rem;
+  font-size: 0.14rem;
+  border: 0.01rem solid #d3d7da;
+  padding-left: 0.1rem; }
 
 /*# sourceMappingURL=app.css.map*/

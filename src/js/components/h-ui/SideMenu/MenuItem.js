@@ -30,7 +30,7 @@ class MenuItem extends React.Component {
 		if (data.child) {
 			let list = [];
 			let child = data.child;
-			let { level, parent, curPath, setPath } = this.props;
+			let { level, parent, curPath, setPath, curItemPath } = this.props;
 			level += 1;
 			parent = parent + '/' + data.id;
 
@@ -41,6 +41,7 @@ class MenuItem extends React.Component {
 					parent: parent,
 					data: child[i],
 					curPath: curPath,
+					curItemPath: curItemPath,
 					setPath: setPath
 				}
 				list.push(
@@ -58,9 +59,9 @@ class MenuItem extends React.Component {
 				</li>
 			)
 		} else {
-			const { parent, level, curPath } = this.props;
+			const { parent, level, curPath, curItemPath } = this.props;
 			let itemCls = "menu-item " + (data.class || '');
-			if (parent + '/' + data.id === curPath) {
+			if (parent + '/' + data.id === curItemPath) {
 				itemCls += ' cur';
 			}
 			// 为了方便用于不需要导航的情况，菜单项不设置link，在菜单项点击回调事件中来处理url跳转。
