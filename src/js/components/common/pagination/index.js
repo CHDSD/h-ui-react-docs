@@ -14,24 +14,34 @@ const code = `
  
 import Pagination from '../../h-ui/Pagination';
 
-this.state = {
-      current:1,
-      total:10,
-      range:6,
-}
-click(papernum) {
-    var currentpaper = this.state.current;
-    if (papernum =='up') {
-      papernum = parseInt(currentpaper) - 1;
-    } else if (papernum =='down') {
-      papernum = parseInt(currentpaper) + 1;
-    };
-    this.setState({
-      current:papernum
-    })
+class DemoPagination extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+          current:1,
+          total:10,
+          range:6,
+    }
+    this.click = this.click.bind(this);
+  }
+  click(papernum) {
+      var currentpaper = this.state.current;
+      if (papernum =='up') {
+        papernum = parseInt(currentpaper) - 1;
+      } else if (papernum =='down') {
+        papernum = parseInt(currentpaper) + 1;
+      };
+      this.setState({
+        current:papernum
+      })
+  }
+  render() {
+    return (
+      <Pagination total = {this.state.total} current = {this.state.current} range = {this.state.range} click = {this.click}></Pagination>
+    );
+  }
 }
 
-<Pagination total = {this.state.total} current = {this.state.current} range = {this.state.range} click = {this.click}></Pagination>
 `;
 
 class DemoPagination extends React.Component {
