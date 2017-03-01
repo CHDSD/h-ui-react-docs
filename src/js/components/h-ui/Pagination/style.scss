@@ -1,5 +1,6 @@
 .pagination{
     box-sizing: border-box;
+	user-select: none;
     
 	span{
 		display:inline-block;
@@ -22,6 +23,11 @@
 	    color: #fff;
 	    background-color: #0275d8;
     	border-color: #0275d8;
+	}
+	.active:hover{
+		color: #fff;
+		background-color: #0275d8;
+		border-color: #0275d8;
 	}
 	svg{
 		position:absolute;
