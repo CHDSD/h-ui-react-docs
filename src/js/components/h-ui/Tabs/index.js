@@ -28,7 +28,7 @@ class Tabs extends React.Component {
         var animatestyle = this.state.animateshow ? {animation: 'tabanimate 300ms linear'} : {};
         var isanimate = this.props.animate ;
         return(
-            <div>
+            <div className="Tabs">
                 {/*动态生成Tab导航*/}
                 <div className="Tab_title_wrap">
                     { React.Children.map( this.props.children , (element,index) => {
