@@ -44,5 +44,13 @@ export default [{
     name: '表单',
     id: 'Form',
     class: ''
+  }, {
+    name: '穿梭框',
+    id: 'transfer',
+    class: ''
+  }, {
+    name: '时间段选择器',
+    id: 'dateSection',
+    class: ''
   }]
 }];

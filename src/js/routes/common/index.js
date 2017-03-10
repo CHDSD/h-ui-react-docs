@@ -4,7 +4,8 @@ import Tabs from '../../components/common/tabs';
 import Popup from '../../components/common/popup';
 import DropList from '../../components/common/dropList';
 import Form from '../../components/common/Form';
-
+import DateSection from '../../components/common/dateSection';
+import Transfer from '../../components/common/Transfer';
 
 const routes = {
 	path: 'common',
@@ -24,6 +25,12 @@ const routes = {
 	}, {
 		path: 'form',
 		component: Form
+	}, {
+		path: 'dateSection',
+		component: DateSection
+	}, {
+		path: 'transfer',
+		component: Transfer
 	}]
 }
 export default routes;
