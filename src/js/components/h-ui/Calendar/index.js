@@ -89,12 +89,22 @@ class Calendar extends React.Component {
 
 	// 阻止点击事件冒泡
 	preventClk(e) {
-		e.stopPropagation();
+		// e.stopPropagation();
 	}
 
 	// 点击item元素框外面时，收起item框
-	outsideClk() {
-		this.setState({showItem: false});
+	outsideClk(e) {
+		let target = e.target;
+		let parent = this.refs.calendar;
+
+		// while (target != undefined && target != null && target.tagName.toUpperCase() !== 'BODY') {
+		// 	if (target === parent) {
+		// 		return true;
+		// 	}
+		// 	target = target.parentNode;
+		// }
+
+		// this.setState({showItem: false});
 	}
 
 	// 获取年视图，显示月份
@@ -397,7 +407,7 @@ class Calendar extends React.Component {
 		}
 
 		return (
-			<div className="chui-calendar" onClick={this.preventClk} style={{display: (this.props.hide ? 'none' : '')}}>
+			<div ref="calendar" className="chui-calendar" onClick={this.preventClk} style={{display: (this.props.hide ? 'none' : '')}}>
 				<div className="ipt-box">
 					<input type="text" onClick={this.toggle} value={this.state.selTimeStr} readOnly={true} />
 				</div>
