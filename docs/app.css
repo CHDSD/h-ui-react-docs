@@ -356,6 +356,13 @@ body {
   width: 80%;
   padding: 0 20px;
   box-sizing: border-box; }
+
+.home-page {
+  background-color: #fff;
+  padding: 10px 20px; }
+  .home-page .pre {
+    padding: 5px;
+    background: #cdcdcd; }
 .container .iSwitch {
   position: relative;
   display: inline-block;
