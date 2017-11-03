@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import createBrowserHistory from 'history/createBrowserHistory';
 import { AppContainer } from 'react-hot-loader';
+
+import './config';
 import AppMain from './AppMain';
+
+const history = createBrowserHistory();
 
 const render = (Component) => {
 	ReactDOM.render(
 		<AppContainer>
-			<Component></Component>
+			<Component history={history}></Component>
 		</AppContainer>,
 		document.getElementById('reactapp')
 	);

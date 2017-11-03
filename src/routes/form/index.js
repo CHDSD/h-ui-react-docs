@@ -1,6 +1,6 @@
-import Form from '../../components/form';
-import Calendar from '../../components/form/calendar';
-import DemoSwitch from '../../components/form/switch';
+import Form from '../../components/Form';
+import Calendar from '../../components/Form/calendar';
+import DemoSwitch from '../../components/Form/switch';
 
 const routes = {
   path: 'form',

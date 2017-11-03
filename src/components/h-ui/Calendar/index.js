@@ -424,10 +424,4 @@ class Calendar extends React.Component {
 	}
 }
 
-Calendar.propTypes = {
-	hide: React.PropTypes.bool,
-	startDate: React.PropTypes.string,
-	endDate: React.PropTypes.string
-};
-
 export default Calendar;

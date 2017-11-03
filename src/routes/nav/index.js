@@ -1,5 +1,5 @@
-import Nav from '../../components/nav';
-import Menu from '../../components/nav/menu';
+import Nav from '../../components/Nav';
+import Menu from '../../components/Nav/menu';
 
 const routes = {
   path: 'nav',

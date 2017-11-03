@@ -6,7 +6,7 @@ class SideMenu extends React.Component {
 	constructor(props) {
 		super(props);
 
-		let contextPath = window.appConf.contextPath || '';
+		let contextPath = props.contextPath || '';
 		contextPath = contextPath && contextPath.replace(/\/+$/, '');
 		this.state = {
 			contextPath: contextPath,

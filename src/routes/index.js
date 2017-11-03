@@ -1,6 +1,6 @@
 import App from '../components/App';
-import Home from '../components/home';
-import About from '../components/about';
+import Home from '../components/Home';
+import About from '../components/About';
 
 import nav from './nav';
 import form from './form';

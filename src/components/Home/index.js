@@ -16,13 +16,13 @@ class Home extends React.Component {
         <p>通用react UI组件库</p>
 
         <h3>快速开始:</h3>
-        <p>
+        <div>
           安装：
           <pre className="pre">npm install h-ui-react</pre><br/>
 
           引入：
           <pre className="pre">import h-ui-react;</pre><br/>
-        </p>
+        </div>
 
         <h3>文档：</h3>
         <a href="https://github.com/CHDSD/HONG-UI-react/blob/master/README.md">HONG-UI-react</a>

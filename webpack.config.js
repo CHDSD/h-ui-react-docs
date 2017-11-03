@@ -5,9 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: [
     "react-hot-loader/patch",
-    "webpack-dev-server/client?http://localhost:8080",
+    "webpack-dev-server/client?http://localhost:8090",
     "webpack/hot/only-dev-server",
-    "./src/js/index.js"
+    "./src/index.js"
   ],
 
   output: {
